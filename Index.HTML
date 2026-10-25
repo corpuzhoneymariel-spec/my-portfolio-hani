@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#f7f3fb">
+	<meta name="description" content="The portfolio and curriculum vitae of Honey Mariel S. Corpuz, aspiring frontend developer.">
+	<title>Honey Mariel S. Corpuz | Portfolio</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			color-scheme: light;
+			--ink: #27202e;
+			--muted: #756c7d;
+			--paper: #fff;
+			--canvas: #f7f3fb;
+			--line: #e8e0ef;
+			--purple: #7748a8;
+			--purple-dark: #4b2d6b;
+			--lilac: #eee5f8;
+			--mint: #e7f1eb;
+			--serif: Georgia, "Times New Roman", serif;
+			--sans: "DM Sans", sans-serif;
+			--display: "Manrope", sans-serif;
+		}
+
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; }
+		body {
+			margin: 0;
+			background: var(--canvas);
+			color: var(--ink);
+			font-family: var(--sans);
+			line-height: 1.6;
+		}
+		a { color: inherit; }
+		button { font: inherit; }
+		.page-shell { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+		.topbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			min-height: 76px;
+			border-bottom: 1px solid rgba(96, 68, 119, .13);
+		}
+		.wordmark { color: var(--purple-dark); font: 800 15px var(--display); letter-spacing: .02em; text-decoration: none; }
+		.nav-links { display: flex; gap: 30px; align-items: center; }
+		.nav-links a { color: var(--muted); font-size: 13px; text-decoration: none; transition: color .2s; }
+		.nav-links a:hover { color: var(--purple); }
+		.top-actions { display: flex; align-items: center; gap: 9px; }
+		.icon-button, .print-button {
+			min-height: 40px;
+			border: 1px solid var(--line);
+			border-radius: 4px;
+			background: var(--paper);
+			color: var(--ink);
+			cursor: pointer;
+		}
+		.icon-button { width: 40px; display: grid; place-items: center; }
+		.print-button { display: inline-flex; align-items: center; gap: 8px; padding: 0 14px; font-size: 12px; font-weight: 700; }
+		.icon-button:hover, .print-button:hover { border-color: var(--purple); color: var(--purple); }
+		.icon-button svg, .print-button svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+		.hero {
+			position: relative;
+			display: grid;
+			grid-template-columns: minmax(0, 1.35fr) minmax(275px, .65fr);
+			gap: 66px;
+			align-items: center;
+			min-height: 495px;
+			padding: 64px 6.5%;
+			margin: 26px 0 32px;
+			overflow: hidden;
+			background: var(--paper);
+			border: 1px solid var(--line);
+		}
+		.hero::before {
+			position: absolute;
+			content: "";
+			width: 360px;
+			height: 360px;
+			right: -150px;
+			top: -200px;
+			border: 1px solid #e9e0f0;
+			border-radius: 50%;
+			box-shadow: 0 0 0 28px #faf7fc, 0 0 0 29px #eee6f3, 0 0 0 64px #fcfafe, 0 0 0 65px #f0eaf5;
+			pointer-events: none;
+		}
+		.hero-copy, .portrait-wrap { position: relative; z-index: 1; }
+		.eyebrow { display: flex; align-items: center; gap: 10px; color: var(--purple); font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+		.eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; }
+		h1 { max-width: 670px; margin: 18px 0 13px; font: 800 clamp(40px, 5.6vw, 68px)/1.04 var(--display); letter-spacing: -.055em; }
+		h1 span { display: block; color: inherit; font: inherit; letter-spacing: inherit; }
+		.hero-tagline { margin: 0; color: var(--muted); font-size: 15px; }
+		.hero-buttons { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 28px; }
+		.cta { min-height: 44px; display: inline-flex; align-items: center; gap: 9px; padding: 0 16px; border: 1px solid var(--purple); border-radius: 3px; background: var(--purple); color: white; font-size: 12px; font-weight: 700; text-decoration: none; transition: transform .2s, background .2s; }
+		.cta:hover { transform: translateY(-2px); background: var(--purple-dark); }
+		.cta.secondary { background: transparent; color: var(--purple-dark); }
+		.cta.secondary:hover { background: var(--lilac); }
+		.cta svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+		.portrait-wrap { justify-self: end; width: min(100%, 295px); }
+		.portrait-frame { position: relative; aspect-ratio: 4 / 5; padding: 9px; border: 1px solid #d9c9e8; background: #f2eafa; }
+		.portrait-frame::after { position: absolute; content: ""; inset: 18px -13px -13px 18px; border: 1px solid #d9c9e8; z-index: -1; }
+		.portrait-missing::before { position: absolute; inset: 9px; display: grid; place-items: center; content: "HMC"; color: var(--purple-dark); background: repeating-linear-gradient(135deg, #eee5f8 0 12px, #f8f4fb 12px 24px); font: italic 42px var(--serif); }
+		.portrait-frame img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 32%; background: #eee8f2; }
+		.portrait-note { position: absolute; right: -25px; bottom: 24px; padding: 9px 12px; background: var(--paper); border: 1px solid var(--line); color: var(--purple-dark); font: italic 14px var(--serif); box-shadow: 0 5px 18px #30223a12; }
+
+		.content-grid { display: grid; grid-template-columns: 265px minmax(0, 1fr); gap: 22px; align-items: start; }
+		.sidebar { display: grid; gap: 18px; }
+		.panel, .section-panel { background: var(--paper); border: 1px solid var(--line); }
+		.panel { padding: 22px; }
+		.panel-title, .section-kicker { margin: 0 0 15px; color: var(--purple); font: 700 10px var(--display); letter-spacing: .16em; text-transform: uppercase; }
+		.contact-list { display: grid; gap: 15px; }
+		.contact-item { display: grid; grid-template-columns: 27px 1fr; gap: 10px; align-items: start; min-width: 0; }
+		.contact-icon { width: 27px; height: 27px; display: grid; place-items: center; color: var(--purple); background: var(--lilac); border-radius: 50%; }
+		.contact-icon svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+		.contact-label { display: block; margin: 0 0 2px; color: #958b9b; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+		.contact-value { display: block; overflow-wrap: anywhere; color: var(--ink); font-size: 11px; line-height: 1.45; text-decoration: none; }
+		.contact-value:hover { color: var(--purple); }
+		.social-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 17px; color: var(--purple); font-size: 11px; font-weight: 700; text-decoration: none; }
+		.social-link svg { width: 15px; height: 15px; fill: currentColor; }
+		.skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+		.skill-tags span { padding: 5px 8px; background: #f6f1fa; border: 1px solid #eee6f4; color: #5f4c70; font-size: 10px; }
+		.main-content { display: grid; gap: 18px; }
+		.section-panel { padding: 25px 29px; scroll-margin-top: 20px; }
+		.section-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 15px; margin-bottom: 17px; }
+		.section-heading h2 { margin: 0; font: 700 21px var(--display); letter-spacing: -.04em; }
+		.section-index { color: #aa9ab7; font: 11px var(--serif); }
+		.about-copy { max-width: 760px; margin: 0; color: #625a69; font-size: 13px; line-height: 1.85; }
+		.education-item { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 15px 0; border-top: 1px solid var(--line); }
+		.education-item:first-of-type { padding-top: 0; border-top: 0; }
+		.education-item h3 { margin: 0 0 4px; font: 700 14px var(--display); }
+		.education-item p { margin: 0; color: var(--muted); font-size: 12px; }
+		.education-badge { align-self: start; padding: 5px 9px; color: var(--purple-dark); background: var(--lilac); font-size: 10px; white-space: nowrap; }
+		.project { display: grid; grid-template-columns: 1fr 160px; gap: 24px; padding: 17px 0; border-top: 1px solid var(--line); }
+		.project:first-of-type { grid-template-columns: 1fr; padding-top: 0; border-top: 0; }
+		.project:first-of-type .project-art { aspect-ratio: 16 / 9; min-height: 0; background: #17131b; }
+		.project-type { margin: 0 0 5px; color: var(--purple); font-size: 9px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+		.project h3 { margin: 0 0 7px; font: 700 15px var(--display); }
+		.project p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.7; }
+		.project-art { position: relative; min-height: 112px; display: grid; place-items: center; overflow: hidden; background: #f0e8f6; color: var(--purple-dark); }
+		.project-art::before, .project-art::after { position: absolute; content: ""; border: 1px solid #d7c7e4; border-radius: 50%; }
+		.project-art::before { width: 130px; height: 130px; top: -63px; right: -44px; }
+		.project-art::after { width: 90px; height: 90px; bottom: -54px; left: -20px; }
+		.project-art svg { position: relative; z-index: 1; width: 35px; height: 35px; fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+		.project-art img { display: block; width: 100%; height: 100%; object-fit: cover; }
+		.project-art.image::before, .project-art.image::after { display: none; }
+		.project-art.tour { background: var(--mint); color: #466a57; }
+		.project-art.tour::before, .project-art.tour::after { border-color: #c4d9ca; }
+		.project-art.tour img { object-fit: contain; background: #1769a7; }
+		.project-footer { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+		.project-footer span { padding: 4px 7px; background: #f5f1f7; color: #72667c; font-size: 9px; }
+		.footer { display: flex; justify-content: space-between; gap: 12px; padding: 24px 2px 30px; color: #8f8497; font-size: 10px; }
+		.footer strong { color: var(--purple-dark); font-weight: 700; }
+		.reveal { animation: rise-in .65s both; }
+		.reveal:nth-child(2) { animation-delay: .08s; }
+		@keyframes rise-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+		body.dark {
+			color-scheme: dark;
+			--ink: #f0eaf4;
+			--muted: #b7aabc;
+			--paper: #211b27;
+			--canvas: #17131b;
+			--line: #3b3044;
+			--purple: #c39ce7;
+			--purple-dark: #e0c9f4;
+			--lilac: #382b43;
+			--mint: #24362d;
+		}
+		body.dark .hero::before { border-color: #493b54; box-shadow: 0 0 0 28px #211b27, 0 0 0 29px #493b54, 0 0 0 64px #211b27, 0 0 0 65px #493b54; }
+		body.dark .about-copy, body.dark .project p { color: #c0b4c6; }
+		body.dark .skill-tags span, body.dark .project-footer span { background: #302638; border-color: #45364f; color: #d1bfdf; }
+		body.dark .icon-button, body.dark .print-button { color: var(--ink); }
+		body.dark .portrait-frame img { background: #352b3d; }
+
+		@media (max-width: 850px) {
+			.nav-links { gap: 15px; }
+			.hero { gap: 35px; padding: 52px 5%; }
+			.content-grid { grid-template-columns: 225px minmax(0, 1fr); gap: 15px; }
+			.section-panel { padding: 22px; }
+			.project { grid-template-columns: 1fr 125px; gap: 15px; }
+		}
+		@media (max-width: 650px) {
+			.page-shell { width: min(100% - 28px, 520px); }
+			.topbar { min-height: 64px; }
+			.nav-links { display: none; }
+			.print-button { width: 40px; justify-content: center; padding: 0; font-size: 0; }
+			.hero { grid-template-columns: 1fr; gap: 33px; padding: 37px 25px 40px; margin-top: 15px; }
+			.hero::before { right: -220px; }
+			h1 { font-size: clamp(42px, 12vw, 58px); }
+			.portrait-wrap { justify-self: start; width: min(72%, 255px); margin-left: 7px; }
+			.content-grid { grid-template-columns: 1fr; }
+			.sidebar { grid-template-columns: 1fr; }
+			.section-panel { padding: 21px 19px; }
+			.project { grid-template-columns: 1fr; }
+			.project-art { min-height: 105px; }
+			.education-item { grid-template-columns: 1fr; gap: 6px; }
+			.education-badge { justify-self: start; }
+			.footer { flex-direction: column; }
+		}
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+		}
+		@media print {
+			@page { margin: 12mm; }
+			body { background: #fff; color: #27202e; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+			.page-shell { width: 100%; }
+			.topbar, .hero-buttons, .footer, .social-link { display: none !important; }
+			.hero { min-height: auto; margin: 0 0 14px; padding: 24px; grid-template-columns: 1fr 180px; gap: 24px; }
+			.portrait-wrap { width: 170px; }
+			.content-grid { grid-template-columns: 215px 1fr; gap: 12px; }
+			.panel, .section-panel { break-inside: avoid; }
+			.main-content { gap: 10px; }
+			.section-panel { padding: 17px; }
+			.reveal { animation: none; }
+		}
+	</style>
+</head>
+<body>
+	<div class="page-shell">
+		<header class="topbar">
+			<a class="wordmark" href="#home">HMC<span aria-hidden="true">.</span></a>
+			<nav class="nav-links" aria-label="Main navigation">
+				<a href="#about">About</a>
+				<a href="#education">Education</a>
+				<a href="#projects">Projects</a>
+				<a href="#skills">Skills</a>
+			</nav>
+			<div class="top-actions">
+				<button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Toggle color theme">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.6A8.5 8.5 0 0 1 8.4 3.8 8.5 8.5 0 1 0 20.2 15.6Z"/></svg>
+				</button>
+				<button class="print-button" type="button" onclick="window.print()">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8V3h10v5M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M7 14h10v7H7z"/><path d="M17 11h.01"/></svg>
+					Print / Save PDF
+				</button>
+			</div>
+		</header>
+
+		<main>
+			<section class="hero reveal" id="home" aria-labelledby="main-title">
+				<div class="hero-copy">
+					<div class="eyebrow">Curriculum Vitae · 2026</div>
+					<h1 id="main-title">Honey Mariel S. <span>Corpuz</span></h1>
+					<p class="hero-tagline">Aspiring Frontend Developer · Creating thoughtful web experiences</p>
+					<div class="hero-buttons">
+						<a class="cta" href="mailto:honeymariel21@gmail.com">
+							Get in touch
+							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+						</a>
+						<a class="cta secondary" href="#projects">Explore my work</a>
+					</div>
+				</div>
+				<div class="portrait-wrap">
+					<div class="portrait-frame">
+						<img src="7f163e09-3bdc-4fdc-bea1-32f248dc603a.jpg" alt="Portrait of Honey Mariel S. Corpuz" onerror="this.style.opacity='0'; this.parentElement.classList.add('portrait-missing')">
+					</div>
+					<div class="portrait-note">Nice to meet you!</div>
+				</div>
+			</section>
+
+			<div class="content-grid">
+				<aside class="sidebar">
+					<section class="panel reveal" aria-labelledby="contact-title">
+						<h2 class="panel-title" id="contact-title">Contact</h2>
+						<div class="contact-list">
+							<div class="contact-item">
+								<span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+								<div><span class="contact-label">Location</span><span class="contact-value">Philippines</span></div>
+							</div>
+							<div class="contact-item">
+								<span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.5a15 15 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2Z"/></svg></span>
+								<div><span class="contact-label">Phone</span><a class="contact-value" href="tel:09944397162">09944397162</a></div>
+							</div>
+							<div class="contact-item">
+								<span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span>
+								<div><span class="contact-label">Email</span><a class="contact-value" href="mailto:honeymariel21@gmail.com">honeymariel21@gmail.com</a></div>
+							</div>
+						</div>
+						<a class="social-link" href="https://github.com/corpuzhoneymariel-spec4" target="_blank" rel="noreferrer">
+							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.5 21.6c.6.1.8-.3.8-.6v-2.1c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.3-1.6-1.3-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.8 2.3 3.7 1.6.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.3-5.1-5.5 0-1.2.4-2.1 1.1-2.9-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.4 0c2.1-1.4 3-1.1 3-1.1.6 1.5.2 2.6.1 2.9.7.8 1.1 1.7 1.1 2.9 0 4.2-2.6 5.2-5.1 5.5.4.3.8 1 .8 2v3c0 .3.2.7.8.6A11.1 11.1 0 0 0 12 .9Z"/></svg>
+							GitHub profile <span aria-hidden="true">↗</span>
+						</a>
+					</section>
+
+					<section class="panel reveal" id="skills" aria-labelledby="skills-title">
+						<h2 class="panel-title" id="skills-title">Skills & Tools</h2>
+						<div class="skill-tags">
+							<span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive Design</span><span>GitHub</span><span>VS Code</span><span>UI Design</span>
+						</div>
+					</section>
+				</aside>
+
+				<div class="main-content">
+					<section class="section-panel reveal" id="about" aria-labelledby="about-title">
+						<div class="section-heading"><h2 id="about-title">About Me</h2><span class="section-index">01</span></div>
+						<p class="about-copy">I am an aspiring Frontend Developer passionate about creating clean, responsive, and user-friendly web interfaces. I have a foundational understanding of HTML, CSS, and JavaScript, and I enjoy turning design concepts into functional and visually appealing websites. I am eager to learn new technologies, improve my coding skills, and gain practical experience in web development. I am a motivated and detail-oriented individual who values creativity, teamwork, and continuous learning. My goal is to build engaging digital experiences that provide users with a smooth and enjoyable experience.</p>
+					</section>
+
+					<section class="section-panel reveal" id="education" aria-labelledby="education-title">
+						<div class="section-heading"><h2 id="education-title">Education</h2><span class="section-index">02</span></div>
+						<article class="education-item">
+							<div><h3>Bachelor of Science in Information Technology</h3><p>Davao Del Norte State College</p></div>
+							<span class="education-badge">Undergraduate</span>
+						</article>
+					</section>
+
+					<section class="section-panel reveal" id="projects" aria-labelledby="projects-title">
+						<div class="section-heading"><h2 id="projects-title">Selected Projects</h2><span class="section-index">03</span></div>
+						<article class="project">
+							<div>
+								<p class="project-type">Academic forecasting · Mobile application</p>
+								<h3>EduPredict</h3>
+								<p>A student-focused academic performance forecasting app that helps learners follow GPA trends, estimate semester grade outcomes, monitor study hours, and stay on top of important milestones.</p>
+								<div class="project-footer"><span>React Native</span><span>TypeScript</span><span>Academic Analytics</span></div>
+							</div>
+							<div class="project-art image">
+								<img src="b6d03540-5c0b-4623-a10e-305cdf37543c.jpg" alt="EduPredict mobile app dashboard showing GPA trends, study hours, and grade predictions">
+							</div>
+						</article>
+						<article class="project">
+							<div>
+								<p class="project-type">Tourism · Travel planning system</p>
+								<h3>TourEase</h3>
+								<p>TourEase is a smart tourism guide and travel planning system designed to help travelers discover destinations, plan itineraries, and explore travel information in one convenient platform. It provides features such as destination discovery, budget-based trip planning, interactive maps, accommodation options, and local events, making travel planning easier, more organized, and enjoyable.</p>
+								<div class="project-footer"><span>Destination Discovery</span><span>Trip Planning</span><span>Interactive Maps</span></div>
+							</div>
+							<div class="project-art tour">
+								<img src="0f74c6ff-bf37-4e33-872e-d3e05ec1a0e3.jpg" alt="TourEase logo with the tagline Your Travel Companion">
+							</div>
+						</article>
+					</section>
+				</div>
+			</div>
+		</main>
+
+		<footer class="footer"><span><strong>Honey Mariel S. Corpuz</strong> · Curriculum Vitae</span><span>© <span id="year"></span> · Designed with care</span></footer>
+	</div>
+	<script>
+		const themeToggle = document.querySelector('#theme-toggle');
+		const savedTheme = localStorage.getItem('cv-theme');
+
+		if (savedTheme === 'dark') document.body.classList.add('dark');
+		updateThemeLabel();
+
+		themeToggle.addEventListener('click', () => {
+			document.body.classList.toggle('dark');
+			localStorage.setItem('cv-theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+			updateThemeLabel();
+		});
+
+		function updateThemeLabel() {
+			const isDark = document.body.classList.contains('dark');
+			themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+		}
+
+		document.querySelector('#year').textContent = new Date().getFullYear();
+	</script>
+</body>
+</html>
