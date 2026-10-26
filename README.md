@@ -17,6 +17,4 @@ Honey Mariel S. Corpuz
 
 [View the live portfolio](https://my-portfolio-hani.vercel.app/#skills)
 
-## Run Locally
 
-Open `index.html` in a web browser. No build step or package installation is required.
